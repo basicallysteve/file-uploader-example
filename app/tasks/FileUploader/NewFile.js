@@ -3,7 +3,7 @@ let File = require("../../database/models/File");
 async function create(payload){
     let {data} = payload.respond();
     let record = {
-        record_type: data.record_type ?? null,
+        record_type: data.record_type ?? "File",
         record_id: data.record_id,
         path: data.path
     }
