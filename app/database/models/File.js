@@ -21,8 +21,4 @@ let File = sqlize.define('File', {
     tableName: 'files'
 })
 
-    let file = File.build({
-        path: 'fake/path'
-    })
-file.save();
 module.exports = File;
