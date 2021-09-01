@@ -1,18 +1,63 @@
 {
   "name": "file-uploader-example",
   "version": "1.0.0",
+  "private": true,
   "description": "An Express Example of file uploader",
-  "main": "index.js",
+  "author": {
+    "name": "Steven Turner"
+  },
   "scripts": {
-    "start": "nodemon index.js",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "start": "concurrently \"npm run serve\" \"nodemon index.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Steven Turner",
-  "license": "ISC",
+  "main": "index.js",
   "dependencies": {
+    "@vue/composition-api": "^1.1.4",
     "axios": "^0.21.1",
+    "buefy": "^0.9.10",
+    "bulma": "^0.9.3",
+    "core-js": "^3.6.5",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "express-fileupload": "^1.2.1"
-  }
+    "express-fileupload": "^1.2.1",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "babel-eslint": "^10.1.0",
+    "concurrently": "^6.2.1",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended",
+      "plugin:vue/essential"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "_id": "file-uploader-example@1.0.0",
+  "license": "ISC",
+  "readme": "ERROR: No README data found!"
 }
