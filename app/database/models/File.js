@@ -1,9 +1,10 @@
-let sqlize = require("../index");
-let {Model, DataTypes} = require("sequelize");
-let File = sqlize.define('File', {
+let {sequelize} = require("../index");
+let {DataTypes} = require("sequelize");
+let File = sequelize.define('File', {
     file_id: {
-        type:DataTypes.UUID,
+        type:DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true
     },
     path: {
         type: DataTypes.STRING,
@@ -14,7 +15,7 @@ let File = sqlize.define('File', {
         defaultValue: 'File'
     },
     record_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: true
     }
 }, {

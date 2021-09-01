@@ -4,7 +4,6 @@ const cors = require("cors");
 const fileUpload = require('express-fileupload');
 const fileRoutes = require('./app/routes/file');
 
-const FileModel = require("./app/database/models/File"); 
 app.use(cors())
 
 app.use(fileUpload());

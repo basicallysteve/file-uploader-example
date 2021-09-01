@@ -9,13 +9,7 @@ async function create(payload){
     }
 
 
-    let file = File.build(record);
-
-    try{
-        file.save();
-    }catch(err){
-        console.log(err);
-    }
+    let file = await File.create(record);
     file = file.toJSON()
     for(let field in file){
         payload.append(field, file[field]);
