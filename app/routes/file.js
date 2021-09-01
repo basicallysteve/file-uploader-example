@@ -1,6 +1,6 @@
 let express = require("express");
 let router = express.Router();
-let {uploadFile} = require("../tasks/FileUploader");
+let {create, uploadFile} = require("../tasks/FileUploader");
 let TaskRunner = require("../helpers/TaskRunner");
 let PayloadResponse = require("../helpers/Response");
 router.post('/upload', function(req, res) {
@@ -15,13 +15,17 @@ router.post('/upload', function(req, res) {
     file = req.files.file;
     let payload = new PayloadResponse();
     payload.append('file', file);
-    let runner = new TaskRunner(payload,[uploadFile]);
-    let response = runner.run();
-    if(response.respond().data instanceof Error){
+    let runner = new TaskRunner(payload,[uploadFile, create]);
+    let promisedResponse = runner.run();
+
+    promisedResponse.then(response=>{
+      if(response.respond().data instanceof Error){
         res.status(500).send(response.respond());
         return;
-    }
-    res.status(200).send(response.respond());
+      }
+      res.status(200).send(response.respond());
+    })  
+   
 });
 
 
