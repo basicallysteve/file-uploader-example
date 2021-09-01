@@ -5,8 +5,6 @@ let TaskRunner = require("../helpers/TaskRunner");
 let PayloadResponse = require("../helpers/Response");
 router.post('/upload', function(req, res) {
     let file;
-    
-    console.log(req);
     if (!req.files || Object.keys(req.files).length === 0) {
       let errorPayload = new PayloadResponse();
       errorPayload.append('message', 'No files were uploaded.')
