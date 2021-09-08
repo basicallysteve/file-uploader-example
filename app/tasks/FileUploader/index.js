@@ -1,6 +1,9 @@
-let {uploadFile} = require("./UploadFile");
+let {uploadFile, isExcelFile, isImageFile} = require("./UploadFile");
 let {create} = require("./NewFile")
+let {get} = require("./Get");
 module.exports = {
     create,
-    uploadFile
+    get,
+    uploadFile,
+    isExcelFile, isImageFile
 }

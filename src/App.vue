@@ -3,6 +3,7 @@
    <section class="section">
     <h1 class="title">File Uploader</h1>
     <file-uploader />
+    <file-viewer />
   </section>
 
   </div>
@@ -10,10 +11,13 @@
 
 <script>
 import FileUploader from "./components/FileUploader.vue";
+import FileViewer from "./components/FileViewer.vue";
+
 export default {
   name: 'App',
   components: {
    FileUploader,
+   FileViewer
   }
 }
 </script>

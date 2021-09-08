@@ -19,6 +19,11 @@ let File = sequelize.define('File', {
         allowNull: true
     }
 }, {
+    getterMethods: {
+        name() {
+          return this.path.replace(/^.*[\\\/]/, '');
+        }
+      },
     tableName: 'files'
 })
 

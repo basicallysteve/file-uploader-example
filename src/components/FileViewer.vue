@@ -1,0 +1,58 @@
+<template>
+    <b-table :data="files" detailed detail-key="name" @details-open="fetchFile">
+        <b-table-column v-slot="props" label="Images" field="path">
+            {{props.row.name}}
+        </b-table-column>
+        <template #detail="props">
+            <div ref="imageContainer" :key="props.row.file_id"/>
+        </template>
+    </b-table>
+</template>
+
+<script>
+import { defineComponent, ref } from "@vue/composition-api"
+import axios from "axios";
+
+export default defineComponent({
+    setup(){
+        const files = ref([]);
+        const child = ref(null)
+        const fetchFiles = async ()=>{
+            let response = await axios.get("http://localhost:8000/files?filter[is_image]=1");
+
+            if(response.status == 200){
+                files.value = response.data.data;
+            }
+        }
+
+
+        return {
+            files,
+            fetchFiles,
+            child
+        }
+    },
+    methods: {
+        async fetchFile(file){
+            let response = await axios.get(`http://localhost:8000/files/${file.name}`);
+
+            if(response.status == 200){
+                // let fileIndex = files.value.findIndex(item => item.path === file.path);
+                let image = new Image(response.data)
+                image.src = file.name;
+                this.child = image;
+            }
+        }
+    },
+    mounted(){
+        this.fetchFiles();
+    },
+    watch: {
+        child(newVal, oldVal){
+            if(oldVal) this.$refs.imageContainer.removeChild(oldVal);
+            if(newVal) this.$refs.imageContainer.appendChild(newVal)
+
+        }
+    }
+})
+</script>
