@@ -1,10 +1,10 @@
 <template>
-    <b-table :data="files" detailed detail-key="name" @details-open="fetchFile">
+    <b-table :data="files" detailed detail-key="file_id">
         <b-table-column v-slot="props" label="Images" field="path">
             {{props.row.name}}
         </b-table-column>
         <template #detail="props">
-            <div ref="imageContainer" :key="props.row.file_id"/>
+            <img :src="`http://localhost:8000/${props.row.path}`" />
         </template>
     </b-table>
 </template>
@@ -30,18 +30,6 @@ export default defineComponent({
             files,
             fetchFiles,
             child
-        }
-    },
-    methods: {
-        async fetchFile(file){
-            let response = await axios.get(`http://localhost:8000/files/${file.name}`);
-
-            if(response.status == 200){
-                // let fileIndex = files.value.findIndex(item => item.path === file.path);
-                let image = new Image(response.data)
-                image.src = file.name;
-                this.child = image;
-            }
         }
     },
     mounted(){

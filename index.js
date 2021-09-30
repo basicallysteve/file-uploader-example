@@ -3,6 +3,8 @@ const app = require("express")();
 const cors = require("cors");
 const fileUpload = require('express-fileupload');
 const fileRoutes = require('./app/routes/file');
+app.use('/storage', require('express').static("storage"));
+
 
 app.use(cors())
 
