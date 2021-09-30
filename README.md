@@ -21,4 +21,8 @@ npm run lint
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## Environment Variables
+
+In order to fully use application, you must set up a few configurations

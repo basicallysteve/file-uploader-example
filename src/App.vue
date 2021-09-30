@@ -1,6 +1,12 @@
 <template>
-  <div id="app">
-   <section class="section">
+  <div id="app" class="is-flex is-flex-direction-row">
+   <b-menu>
+     <b-menu-list>
+       <b-menu-item label="Upload Files" />
+       <b-menu-item label="View Files" />
+     </b-menu-list>
+   </b-menu>
+   <section class="section is-full">
     <h1 class="title">File Uploader</h1>
     <file-uploader />
     <file-viewer />
